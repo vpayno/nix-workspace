@@ -1,0 +1,29 @@
+{
+	"name": "gentoo-workspace",
+	"image": "gentoo/stage3",
+	"build": {},
+	"customizations": {
+		"vscode": {
+			"settings": {},
+			"extensions": []
+		}
+	},
+	"settings": {
+		"terminal.integrated.shell.linux": "/usr/bin/env bash"
+	},
+	"features": {},
+	"forwardPorts": [],
+	"mounts": [
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+	],
+	"portsAttributes": {},
+	"initializeCommand": "true",
+	"postCreateCommand": "cd /workspaces/gentoo-workspace/; ls -Rlh .devcontainer/; ./.devcontainer/scripts/dc-up-post-create-command.sh user:${localEnv:USER}",
+	"remoteUser": "root",
+	"runArgs": [
+		"--name",
+		"${localEnv:USER}_gentoo-workspace",
+		"--add-host=host.docker.internal:host-gateway"
+	],
+	"shutdownAction": "none"
+}

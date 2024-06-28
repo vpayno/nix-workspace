@@ -40,6 +40,7 @@ export default {
         'chore',
         'ci',
         'coral',
+        'devcontainer',
         'docs',
         'feat',
         'fix',
@@ -142,6 +143,11 @@ export default {
             description: 'Reverts a previous commit',
             title: 'Reverts',
             emoji: '🗑',
+          },
+          devcontainer: {
+            description: 'Dev container changes',
+            title: 'Dev Container',
+            emoji: '🫙',
           },
         },
         scope: {

@@ -1,3 +1,6 @@
 # generic gitignore entries
 *~
 *bak
+
+# dev container
+/.devcontainer/scripts/data.tmp
