@@ -28,6 +28,9 @@ printf "\n"
 time emerge --jobs=2 -tvN @world
 printf "\n"
 
+time emerge --jobs=2 -tv app-portage/gentoolkit
+printf "\n"
+
 time emerge --noreplace --jobs=2 -tv "${ebuilds[@]}"
 printf "\n"
 
