@@ -24,8 +24,8 @@ rword() {
 
 declare devcontainer_id
 
-# devcontainer_id="$(docker ps --all --format 'json' | jq -r '. | select(.Names | contains("gentoo-workspace")) | select(.Image == "gentoo/stage3:latest") | .ID')"
-devcontainer_id="$(docker ps --all --format 'json' | jq -r '. | select(.Names | contains("gentoo-workspace")) | .ID')"
+# devcontainer_id="$(docker ps --all --format 'json' | jq -r '. | select(.Names | contains("nix-workspace")) | select(.Image == "nixos/nix:latest") | .ID')"
+devcontainer_id="$(docker ps --all --format 'json' | jq -r '. | select(.Names | contains("nix-workspace")) | .ID')"
 
 ./.devcontainer/scripts/dc-list
 printf "\n"
@@ -57,8 +57,8 @@ printf "\n"
 time devcontainer up --mount type=bind,source="${HOME}",target="${HOME}" --workspace-folder "${PWD}"
 printf "\n"
 
-time docker commit vpayno_gentoo-workspace gentoo/stage3:latest
+time docker commit vpayno_nix-workspace nixos/nix:latest
 printf "\n"
 
-docker image ls | grep gentoo/stage3
+docker image ls | grep nixos/nix
 printf "\n"

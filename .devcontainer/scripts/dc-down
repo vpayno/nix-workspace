@@ -2,8 +2,8 @@
 
 declare devcontainer_id
 
-# devcontainer_id="$(docker ps --format 'json' | jq -r '. | select(.Names | contains("gentoo-workspace")) | select(.Image == "gentoo/stage3:latest") | .ID')"
-devcontainer_id="$(docker ps --all --format 'json' | jq -r '. | select(.Names | contains("gentoo-workspace")) | .ID')"
+# devcontainer_id="$(docker ps --format 'json' | jq -r '. | select(.Names | contains("nix-workspace")) | select(.Image == "nixos/nix:latest") | .ID')"
+devcontainer_id="$(docker ps --all --format 'json' | jq -r '. | select(.Names | contains("nix-workspace")) | .ID')"
 
 ./.devcontainer/scripts/dc-list
 printf "\n"

@@ -4,7 +4,7 @@ set -x
 set -e
 
 # shellcheck disable=SC1091 source=.devcontainer/scripts/data.tmp
-source /workspaces/gentoo-workspace/.devcontainer/scripts/data.tmp
+source /workspaces/nix-workspace/.devcontainer/scripts/data.tmp
 
 # process name:value args
 declare NEWUSER

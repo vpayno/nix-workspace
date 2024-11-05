@@ -3,7 +3,7 @@
 {
 	printf "%s," ID Names Image State Status RunningFor
 	printf "\n"
-	# docker ps --all --format 'json' | jq -r '. | select(.Names | contains("gentoo-workspace")) | select(.Image == "gentoo/stage3:latest") | "\(.ID),\(.Names),\(.Image),\(.State),\(.Status),\(.RunningFor)"'
-	docker ps --all --format 'json' | jq -r '. | select(.Names | contains("gentoo-workspace")) | "\(.ID),\(.Names),\(.Image),\(.State),\(.Status),\(.RunningFor)"'
+	# docker ps --all --format 'json' | jq -r '. | select(.Names | contains("nix-workspace")) | select(.Image == "nixos/nix:latest") | "\(.ID),\(.Names),\(.Image),\(.State),\(.Status),\(.RunningFor)"'
+	docker ps --all --format 'json' | jq -r '. | select(.Names | contains("nix-workspace")) | "\(.ID),\(.Names),\(.Image),\(.State),\(.Status),\(.RunningFor)"'
 	printf "\n"
 } | column -t --separator ","

@@ -1,6 +1,6 @@
 {
-	"name": "gentoo-workspace",
-	"image": "gentoo/stage3",
+	"name": "nix-workspace",
+	"image": "nixos/nix",
 	"build": {},
 	"customizations": {
 		"vscode": {
@@ -18,11 +18,11 @@
 	],
 	"portsAttributes": {},
 	"initializeCommand": "true",
-	"postCreateCommand": "cd /workspaces/gentoo-workspace/; ls -Rlh .devcontainer/; ./.devcontainer/scripts/dc-up-post-create-command.sh user:${localEnv:USER}",
+	"postCreateCommand": "cd /workspaces/nix-workspace/; ls -Rlh .devcontainer/; ./.devcontainer/scripts/dc-up-post-create-command.sh user:${localEnv:USER}",
 	"remoteUser": "root",
 	"runArgs": [
 		"--name",
-		"${localEnv:USER}_gentoo-workspace",
+		"${localEnv:USER}_nix-workspace",
 		"--add-host=host.docker.internal:host-gateway"
 	],
 	"shutdownAction": "none"
