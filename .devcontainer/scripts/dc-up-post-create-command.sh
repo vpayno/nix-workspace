@@ -14,27 +14,37 @@ for arg in "${@}"; do
 	fi
 done
 
-declare -a ebuilds=(
-	app-admin/sudo
-	app-misc/tmux
-	app-portage/eix
+declare -a pkgs=(
+	getent-glibc
+	openssh
+	shadow
 )
 
 # these commands also run as root
 
-time emerge --quiet --sync
+time nix-info --markdown
 printf "\n"
 
-time emerge --jobs=2 -tvN @world
+time nix-channel --list
 printf "\n"
 
-time emerge --jobs=2 -tv app-portage/gentoolkit
+time nix-channel --update
 printf "\n"
 
-time emerge --noreplace --jobs=2 -tv "${ebuilds[@]}"
+time nix-env -u '*'
 printf "\n"
 
-time eix-update
+for pkg in "${pkgs[@]}"; do
+	time nix-env --install "${pkg}"
+	printf "\n"
+done
+
+printf "Cleaning up Nix store...\n"
+time nix-collect-garbage
+printf "\n"
+
+printf "Installed packages:\n"
+time nix-env --query "*"
 printf "\n"
 
 if [[ -n ${NEWUSER} ]]; then
@@ -47,6 +57,7 @@ fi
 
 # shellcheck disable=SC2154
 {
+	ls -lh /etc/{group,passwd,shadow,gshadow}
 	if ! getent group | grep -q -E "^${devcontainer_username}:"; then
 		groupadd --gid "${devcontainer_gid}" "${devcontainer_username}"
 	fi
