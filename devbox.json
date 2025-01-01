@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.7/.schema/devbox.schema.json",
+  "packages": [
+    "runme@latest",
+    "glow@latest",
+    "gum@latest",
+    "jq@latest",
+    "yq-go@latest",
+    "yamlfix@latest",
+    "yamllint@latest",
+    "markdownlint-cli@latest",
+    "git@latest",
+    "nix-doc@latest",
+    "nixfmt@latest"
+  ],
+  "env": {
+    "AOC_YEAR": "2024"
+  },
+  "shell": {
+    "init_hook": [],
+    "scripts": {
+      "aoc": [
+        "aoc --year \"${AOC_YEAR}\" $@"
+      ],
+      "aoc-team": [
+        "aoc --year \"${AOC_YEAR}\" private-leaderboard \"$(cat .adventofcode.private_leader_board_id)\" $@"
+      ],
+      "aoc-download": [
+        "./scripts/download $@"
+      ],
+      "fix": [
+        "cargo fix $@"
+      ],
+      "lint": [
+        "cargo clippy $@"
+      ],
+      "test-all": [
+        "cargo test $@"
+      ]
+    }
+  }
+}
