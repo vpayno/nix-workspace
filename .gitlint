@@ -10,11 +10,12 @@
 # [general]
 # Ignore certain rules, this example uses both full name and id
 # ignore=title-trailing-punctuation, T3
+ignore=B6
 
 # verbosity should be a value between 1 and 3, the commandline -v flags take precedence over this
 # verbosity = 2
 
-# By default gitlint will ignore merge, revert, fixup, fixup=amend, and squash commits. 
+# By default gitlint will ignore merge, revert, fixup, fixup=amend, and squash commits.
 # ignore-merge-commits=true
 # ignore-revert-commits=true
 # ignore-fixup-commits=true
@@ -24,7 +25,7 @@
 # Ignore any data sent to gitlint via stdin
 # ignore-stdin=true
 
-# Fetch additional meta-data from the local repository when manually passing a 
+# Fetch additional meta-data from the local repository when manually passing a
 # commit message to gitlint via stdin or --commit-msg. Disabled by default.
 # staged=true
 
@@ -54,6 +55,8 @@
 # set the line-length it enforces to 50
 # [title-max-length]
 # line-length=50
+[title-max-length]
+line-length=80
 
 # Conversely, you can also enforce minimal length of a title with the
 # "title-min-length" rule:
