@@ -14,29 +14,11 @@
     "nixfmt@latest"
   ],
   "env": {
-    "AOC_YEAR": "2024"
   },
   "shell": {
-    "init_hook": [],
+    "init_hook": [
+    ],
     "scripts": {
-      "aoc": [
-        "aoc --year \"${AOC_YEAR}\" $@"
-      ],
-      "aoc-team": [
-        "aoc --year \"${AOC_YEAR}\" private-leaderboard \"$(cat .adventofcode.private_leader_board_id)\" $@"
-      ],
-      "aoc-download": [
-        "./scripts/download $@"
-      ],
-      "fix": [
-        "cargo fix $@"
-      ],
-      "lint": [
-        "cargo clippy $@"
-      ],
-      "test-all": [
-        "cargo test $@"
-      ]
     }
   }
 }
