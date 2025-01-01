@@ -41,6 +41,7 @@ export default {
         'ci',
         'coral',
         'devcontainer',
+        'devbox',
         'docs',
         'feat',
         'fix',
