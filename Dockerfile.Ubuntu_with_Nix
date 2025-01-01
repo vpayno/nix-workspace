@@ -1,0 +1,19 @@
+# Dockerfile.Ubuntu_with_Nix
+# Installing Nix on a Ubuntu container
+
+FROM ubuntu:latest
+
+RUN apt update -y
+
+RUN apt upgrade -y
+
+RUN apt install -y curl
+
+RUN curl --proto '=https' --tlsv1.3 -sSf -L https://install.determinate.systems/nix | sh -s -- install linux \
+  --extra-conf "sandbox = false" --init none --no-confirm
+
+ENV PATH="${PATH}:/nix/var/nix/profiles/default/bin"
+
+RUN nix run nixpkgs#hello
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/ && nix-store --gc

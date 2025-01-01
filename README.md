@@ -67,3 +67,25 @@ In playbooks, use the script `./scripts/in-nix-shell` to enforce that the `runme
 ./scripts/in-nix-shell || exit 1
 which runme
 ```
+
+## Docker & Nix
+
+Experimenting with using `docker` and `nix-build` to build containers.
+
+### Dockerfile
+
+Using this method to manage `Debian` based containers with `nix` instead of `apt`.
+
+To build the container locally run:
+
+```bash { name=docker-ubuntu-build }
+docker build --file ./Dockerfile.Ubuntu_with_Nix --tag ubuntu-with-nix .
+printf "\n"
+
+docker image ls ubuntu-with-nix
+printf "\n"
+
+echo Running: docker run --rm --interactive --tty ubuntu-with-nix which nix
+docker run --rm --interactive --tty ubuntu-with-nix which nix
+printf "\n"
+```
