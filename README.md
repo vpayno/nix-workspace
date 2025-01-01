@@ -26,7 +26,7 @@ Benefits over dev containers?
 
 [Install and setup instructions can be found here.](https://github.com/jetify-com/devbox?tab=readme-ov-file#installing-devbox)
 
-```bash { name=setup-00-devbox-show-installed }
+```bash { name=setup-00-devbox-show-installed excludeFromRunAll=true }
 devbox update
 devbox list
 ```
@@ -63,7 +63,7 @@ runme
 
 In playbooks, use the script `./scripts/in-nix-shell` to enforce that the `runme` plays are running in a `nix-shell` when required.
 
-```bash { name=example-play }
+```bash { name=example-play excludeFromRunAll=true }
 ./scripts/in-nix-shell || exit 1
 which runme
 ```
@@ -78,7 +78,7 @@ Using this method to manage `Debian` based containers with `nix` instead of `apt
 
 To build the container locally run:
 
-```bash { name=docker-ubuntu-build }
+```bash { name=docker-ubuntu-build excludeFromRunAll=true }
 docker build --file ./Dockerfile.Ubuntu_with_Nix --tag ubuntu-with-nix .
 printf "\n"
 
