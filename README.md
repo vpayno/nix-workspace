@@ -76,7 +76,21 @@ Experimenting with using `docker` and `nix-build` to build containers.
 
 Using this method to manage `Debian` based containers with `nix` instead of `apt`.
 
-To build the container locally run:
+To build an Debian+Nix container locally run:
+
+```bash { name=docker-debian-build excludeFromRunAll=true }
+docker build --file ./Dockerfile.Debian_with_Nix --tag debian-with-nix .
+printf "\n"
+
+docker image ls debian-with-nix
+printf "\n"
+
+echo Running: docker run --rm --interactive --tty debian-with-nix which nix
+docker run --rm --interactive --tty debian-with-nix which nix
+printf "\n"
+```
+
+To build an Ubuntu+Nix container locally run:
 
 ```bash { name=docker-ubuntu-build excludeFromRunAll=true }
 docker build --file ./Dockerfile.Ubuntu_with_Nix --tag ubuntu-with-nix .
