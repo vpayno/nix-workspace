@@ -39,3 +39,31 @@ devbox list
 - use `devbox update` to update the lock file and environemnt
 - use `devbox shell` to start the `nix-shell`
 - use `devbox run command` to run a command inside the `nix-shell`
+
+## RunMe Playbook
+
+This and other readme files in this repo are RunMe Playbooks.
+
+Use this playbook step/task to update the [RunMe](https://runme.dev) CLI.
+
+You don't need to install `runme` locally, it's already in the `devbox` shell.
+
+Either run `runme` using `devbox run`:
+
+```bash
+devbox run runme
+```
+
+or by starting an interactive `devbox shell`:
+
+```bash
+devbox shell
+runme
+```
+
+In playbooks, use the script `./scripts/in-nix-shell` to enforce that the `runme` plays are running in a `nix-shell` when required.
+
+```bash { name=example-play }
+./scripts/in-nix-shell || exit 1
+which runme
+```

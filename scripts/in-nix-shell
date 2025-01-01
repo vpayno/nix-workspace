@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [[ -z ${IN_NIX_SHELL} ]]; then
+	printf "\n"
+	printf "ERROR: please run inside nix-shell/devbox shell\n" 1>&2
+	printf "\n"
+	exit 1
+fi
+
+exit 0
