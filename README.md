@@ -103,3 +103,44 @@ echo Running: docker run --rm --interactive --tty ubuntu-with-nix which nix
 docker run --rm --interactive --tty ubuntu-with-nix which nix
 printf "\n"
 ```
+
+### nix-build
+
+Using this method to manage `nixos` containers.
+
+To build an example `nixos` container:
+
+```bash { name=nix-build-docker-default excludeFromRunAll=true }
+./scripts/in-nix-shell || exit 1
+
+if docker images --format '{{.Repository}}:{{.Tag}}' nixos-base | grep -q ^nixos-base; then
+	echo "Deleting previous nixos-base image(s)"
+	docker rmi $(docker images --format '{{.Repository}}:{{.Tag}}' nixos-base)
+	printf "\n"
+fi
+
+nix-build docker-nixos-base.nix
+printf "\n"
+
+ls -lh result
+printf "\n"
+
+docker load < result
+printf "\n"
+
+docker image ls nixos-base
+printf "\n"
+
+docker image ls --format=json nixos-base | jq .
+printf "\n"
+
+IMAGE_TAG="$(docker image ls --format=json nixos-base | jq -r .Tag)"
+IMAGE_ID="$(docker image ls --format=json nixos-base | jq -r .ID)"
+
+docker tag "${IMAGE_ID}" nixos-base:latest
+printf "\n"
+
+echo Running: docker run --rm --interactive --tty nixos-base:latest which nix
+docker run --rm --interactive --tty nixos-base:latest
+printf "\n"
+```

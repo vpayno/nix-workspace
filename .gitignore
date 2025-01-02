@@ -4,3 +4,6 @@
 
 # dev container
 /.devcontainer/scripts/data.tmp
+
+# nix-build
+/result
