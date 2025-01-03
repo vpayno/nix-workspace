@@ -1,7 +1,7 @@
 # Dockerfile.Ubuntu_with_Nix
 # Installing Nix on a Ubuntu container
 
-FROM ubuntu:latest
+FROM ubuntu:24.04
 
 RUN apt update -y
 
