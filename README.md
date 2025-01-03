@@ -79,6 +79,9 @@ Using this method to manage `Debian` based containers with `nix` instead of `apt
 To build an Debian+Nix container locally run:
 
 ```bash { name=docker-debian-build excludeFromRunAll=true }
+docker builder prune --all --force
+printf "\n"
+
 docker build --file ./Dockerfile.Debian_with_Nix --tag debian-with-nix .
 printf "\n"
 
@@ -93,6 +96,9 @@ printf "\n"
 To build an Ubuntu+Nix container locally run:
 
 ```bash { name=docker-ubuntu-build excludeFromRunAll=true }
+docker builder prune --all --force
+printf "\n"
+
 docker build --file ./Dockerfile.Ubuntu_with_Nix --tag ubuntu-with-nix .
 printf "\n"
 
@@ -112,6 +118,9 @@ To build an example `nixos` container:
 
 ```bash { name=nix-build-docker-default excludeFromRunAll=true }
 ./scripts/in-nix-shell || exit 1
+
+docker builder prune --all --force
+printf "\n"
 
 if docker images --format '{{.Repository}}:{{.Tag}}' nixos-base | grep -q ^nixos-base; then
 	echo "Deleting previous nixos-base image(s)"
