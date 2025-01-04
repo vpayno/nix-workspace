@@ -12,7 +12,7 @@ pkgs.dockerTools.buildImage {
   copyToRoot = pkgs.buildEnv {
     name = "image-root";
     paths = with pkgs; [
-      bash
+      bashInteractive
       coreutils-full
       nix
       tmux
