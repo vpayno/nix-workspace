@@ -173,8 +173,8 @@ IMAGE_ID="$(docker image ls --format=json nixos-base | jq -r .ID)"
 docker tag "${IMAGE_ID}" nixos-base:latest
 printf "\n"
 
-echo Running: docker run --rm --interactive --tty nixos-base:latest
-docker run --rm --interactive --tty nixos-base:latest
+echo Running: docker run --rm --interactive --tty nixos-base:latest tmux -V
+docker run --rm --interactive --tty nixos-base:latest tmux -V
 printf "\n"
 ```
 
@@ -182,7 +182,10 @@ printf "\n"
 docker image ls nixos-base
 printf "\n"
 
-echo Running: docker run --rm --interactive --tty nixos-base:latest
-docker run --rm --interactive --tty nixos-base:latest
+echo Running: docker run --rm --interactive --tty nixos-base:latest tmux
+docker run --rm --interactive --tty nixos-base:latest tmux
+printf "\n"
+
+reset
 printf "\n"
 ```
