@@ -103,6 +103,17 @@ docker run --rm --interactive --tty debian-with-nix which nix
 printf "\n"
 ```
 
+Run the Debian+Nix container:
+
+```bash { name=docker-debian-run excludeFromRunAll=true }
+docker image ls debian-with-nix
+printf "\n"
+
+echo Running: docker run --rm --interactive --tty debian-with-nix
+docker run --rm --interactive --tty debian-with-nix
+printf "\n"
+```
+
 To build an Ubuntu+Nix container locally run:
 
 ```bash { name=docker-ubuntu-build excludeFromRunAll=true }
@@ -114,6 +125,17 @@ printf "\n"
 
 echo Running: docker run --rm --interactive --tty ubuntu-with-nix which nix
 docker run --rm --interactive --tty ubuntu-with-nix which nix
+printf "\n"
+```
+
+Run the Ubuntu+Nix container:
+
+```bash { name=docker-ubuntu-run excludeFromRunAll=true }
+docker image ls ubuntu-with-nix
+printf "\n"
+
+echo Running: docker run --rm --interactive --tty ubuntu-with-nix
+docker run --rm --interactive --tty ubuntu-with-nix
 printf "\n"
 ```
 
@@ -145,6 +167,15 @@ IMAGE_TAG="$(docker image ls --format=json nixos-base | jq -r .Tag)"
 IMAGE_ID="$(docker image ls --format=json nixos-base | jq -r .ID)"
 
 docker tag "${IMAGE_ID}" nixos-base:latest
+printf "\n"
+
+echo Running: docker run --rm --interactive --tty nixos-base:latest
+docker run --rm --interactive --tty nixos-base:latest
+printf "\n"
+```
+
+```bash { name=nix-run-docker-default excludeFromRunAll=true }
+docker image ls nixos-base
 printf "\n"
 
 echo Running: docker run --rm --interactive --tty nixos-base:latest
