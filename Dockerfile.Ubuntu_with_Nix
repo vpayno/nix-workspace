@@ -14,6 +14,17 @@ RUN curl --proto '=https' --tlsv1.3 -sSf -L https://install.determinate.systems/
 
 ENV PATH="${PATH}:/nix/var/nix/profiles/default/bin"
 
+RUN nix-channel --list
+
+# RUN nix-channel --add https://nixos.org/channels/nixos-unstable
+RUN nix-channel --add https://channels.nixos.org/nixos-24.11 nixos
+
+RUN nix-channel --list
+
+RUN nix-channel --update
+
+RUN nix profile install nixpkgs#tmux
+
 RUN nix run nixpkgs#hello
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/ && nix-store --gc

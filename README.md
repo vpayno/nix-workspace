@@ -136,9 +136,11 @@ Run the Ubuntu+Nix container:
 docker image ls ubuntu-with-nix
 printf "\n"
 
-echo Running: docker run --rm --interactive --tty ubuntu-with-nix
-docker run --rm --interactive --tty ubuntu-with-nix
+echo Running: docker run --rm --interactive --tty ubuntu-with-nix tmux
+docker run --rm --interactive --tty ubuntu-with-nix tmux
 printf "\n"
+
+reset
 ```
 
 ### nix-build
