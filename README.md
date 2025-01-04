@@ -147,7 +147,7 @@ IMAGE_ID="$(docker image ls --format=json nixos-base | jq -r .ID)"
 docker tag "${IMAGE_ID}" nixos-base:latest
 printf "\n"
 
-echo Running: docker run --rm --interactive --tty nixos-base:latest which nix
+echo Running: docker run --rm --interactive --tty nixos-base:latest
 docker run --rm --interactive --tty nixos-base:latest
 printf "\n"
 ```
