@@ -22,6 +22,14 @@ pkgs.dockerTools.buildImage {
     ];
   };
 
+  environment.etc = {
+    "nix/nix.conf" = {
+      text = ''
+        experimental-features = nix-command flakes ca-derivations cgroups fetch-closure
+      '';
+    };
+  };
+
   runAsRoot = ''
   #!${pkgs.runtimeShell}
   mkdir -pv /workdir
