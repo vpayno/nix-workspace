@@ -109,9 +109,11 @@ Run the Debian+Nix container:
 docker image ls debian-with-nix
 printf "\n"
 
-echo Running: docker run --rm --interactive --tty debian-with-nix
-docker run --rm --interactive --tty debian-with-nix
+echo Running: docker run --rm --interactive --tty debian-with-nix tmux
+docker run --rm --interactive --tty debian-with-nix tmux
 printf "\n"
+
+reset
 ```
 
 To build an Ubuntu+Nix container locally run:
