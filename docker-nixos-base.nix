@@ -2,8 +2,7 @@
 # https://ryantm.github.io/nixpkgs/builders/images/dockertools/
 
 { pkgs ? import <nixpkgs> { }
-, pkgsLinux ? import <nixpkgs> { system = "x86_64-linux"; }
-}:
+, pkgsLinux ? import <nixpkgs> { system = "x86_64-linux"; } }:
 
 pkgs.dockerTools.buildImage {
   name = "nixos-base";
@@ -11,15 +10,8 @@ pkgs.dockerTools.buildImage {
 
   copyToRoot = pkgs.buildEnv {
     name = "image-root";
-    paths = with pkgs; [
-      bashInteractive
-      coreutils-full
-      nix
-      tmux
-    ];
-    pathsToLink = [
-      "/bin"
-    ];
+    paths = with pkgs; [ bashInteractive coreutils-full nix tmux ];
+    pathsToLink = [ "/bin" ];
   };
 
   environment.etc = {
@@ -31,13 +23,13 @@ pkgs.dockerTools.buildImage {
   };
 
   runAsRoot = ''
-  #!${pkgs.runtimeShell}
-  mkdir -pv /workdir
+    #!${pkgs.runtimeShell}
+    mkdir -pv /workdir
   '';
 
   config = {
     Cmd = [ "${pkgsLinux.bash}/bin/bash" ];
     WorkingDir = "/workdir";
-    Volumes = { "/workdir" = {}; };
+    Volumes = { "/workdir" = { }; };
   };
 }
