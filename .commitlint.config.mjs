@@ -42,6 +42,7 @@ export default {
         'coral',
         'devcontainer',
         'devbox',
+        'docker',
         'docs',
         'feat',
         'fix',
@@ -148,6 +149,11 @@ export default {
           devcontainer: {
             description: 'Dev container changes',
             title: 'Dev Container',
+            emoji: '🫙',
+          },
+          docker: {
+            description: 'Docker container changes',
+            title: 'Docker Container',
             emoji: '🫙',
           },
         },
