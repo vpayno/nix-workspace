@@ -79,9 +79,9 @@ docker builder prune --all --force
 printf "\n"
 
 if docker images --format '{{.Repository}}:{{.Tag}}' nixos-base | grep -q ^nixos-base; then
-	echo "Deleting previous nixos-base image(s)"
-	docker rmi $(docker images --format '{{.Repository}}:{{.Tag}}' nixos-base)
-	printf "\n"
+    echo "Deleting previous nixos-base image(s)"
+    docker rmi $(docker images --format '{{.Repository}}:{{.Tag}}' nixos-base)
+    printf "\n"
 fi
 ```
 
