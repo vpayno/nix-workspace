@@ -14,7 +14,7 @@ pkgs.dockerTools.buildImage {
     pathsToLink = [ "/bin" ];
   };
 
-  environment.etc = {
+  config.environment.etc = {
     "nix/nix.conf" = {
       text = ''
         experimental-features = nix-command flakes ca-derivations cgroups fetch-closure
