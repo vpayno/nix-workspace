@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+declare -a args=("${@:-./play.nix}")
+
+declare system
+#system="$(nix run github:nix-systems/current-system)"
+system="$(nix eval --impure --raw --expr 'builtins.currentSystem')"
+
+declare nixfmt="nix run nixpkgs#legacyPackages.${system}.nixfmt-rfc-style --"
+
+nix_instantiate() {
+	printf "Running: %s | %s\n" "nix-instantiate -I nixpkgs=nixpkgs/ --eval --strict --show-trace ${args[*]}" "${nixfmt} --filename=-" 1>&2
+	printf "\n" 1>&2
+
+	nix-instantiate -I nixpkgs=nixpkgs/ --eval --strict --show-trace "${args[@]}" | ${nixfmt} --filename=-
+}
+
+output="$(nix_instantiate)"
+
+printf "Output:\n\n"
+printf -- "---\n"
+echo "${output}"
+printf -- "---\n"

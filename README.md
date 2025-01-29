@@ -192,3 +192,12 @@ printf "\n"
 reset
 printf "\n"
 ```
+
+## nix-play
+
+Added a wrapper script to `nix instantiate` to called `nix-play` to make it
+easier to test `nix` code.
+
+```bash { name=nix-play-example excludeFromRunAll=true }
+./nix-play ./flake.nix
+```
